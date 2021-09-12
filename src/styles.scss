@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr.css';
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+button{
+    padding: 15px 10px;
+    background-color: rgb(48, 78, 250);
+    margin-right: 5px;
+    color: white;
+    font-weight: 600;
+    border: none;
+    width: 100px;
+    cursor: pointer;
+}
+.block{
+    width: 500px;
+    background: linear-gradient(270deg, rgb(119, 117, 117),white);
+    height: 500px;
+    display: flex;
+}
+

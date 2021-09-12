@@ -1,0 +1,8 @@
+<div class="dashwrapper">
+    <h1>Welcome</h1>
+        <ul>
+            <li *ngFor="let item of user"> {{item.name}}</li>
+        </ul>
+    <button class="logoutButton" (click)="logout()" >Logout</button>
+
+</div>

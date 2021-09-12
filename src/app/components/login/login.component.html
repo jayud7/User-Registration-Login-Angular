@@ -1,0 +1,15 @@
+<div class="wrapper">
+
+    <div class="block">
+        <form [formGroup]="login">  
+            <h2>Welcome</h2>
+            <input type="text" placeholder="Enter Username" class="inp" formControlName="userName"/>
+            <input type="text" placeholder="Enter Password" class="inp" formControlName="password"/>
+            <div class="btns">
+                <button type="submit" (click)="loginSubmit(login.value)" >Login</button>
+                <button type="button" (click)="goToSignUp()">Sign up</button>
+            </div>
+        </form>
+
+    </div>
+</div>

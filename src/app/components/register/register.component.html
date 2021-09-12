@@ -1,0 +1,16 @@
+<div class="wrapper">
+    <div class="block">
+        <form [formGroup]="register">  
+            <h2>Register</h2>
+            <input type="text" placeholder="Enter Username" class="inp" formControlName="userName"/>
+            <input type="text" placeholder="Enter Password" class="inp" formControlName="password"/>
+            <input type="text" placeholder="Enter Name" class="inp" formControlName="name"/>
+            <input type="number" placeholder="Enter Mobile" class="inp" formControlName="mobile"/>
+            <div class="btns">
+                <button (click)="registerSubmit(register.value)" >Sign up</button>
+                <button (click)="goToLogin()">Login</button>
+            </div>
+        </form>
+
+    </div>
+</div>
