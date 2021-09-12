@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonService } from 'src/app/common.service';
 import { NotificationService } from 'src/app/notification.service';
@@ -13,33 +13,30 @@ export class RegisterComponent implements OnInit {
 
   constructor(private fb:FormBuilder, private router:Router, private cooServ:CommonService, private notify:NotificationService) { }
   register: any = FormGroup;
-  id:any = this.cooServ.countUser();
-  res:any;
   ngOnInit(): void {
     this.register = this.fb.group({
-      userName:['',Validators.compose([Validators.required,Validators.email])],
-      password:['',Validators.required],
-      name:['',Validators.required],
-      mobile:['',Validators.compose([Validators.required,Validators.minLength(10),Validators.maxLength(10)])]
+      'userName':new FormControl(null,[Validators.required,Validators.email]),
+      'password':new FormControl(null,  Validators.required),
+      'name':new FormControl(null, Validators.required),
+      'mobile':new FormControl(null, [Validators.required,Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$')])
     })
   }
+
   registerSubmit(data:any){
     let dataToPass = {
     userName:data.userName,
     password:data.password,
     name:data.name,
     mobile:data.mobile,
-
-    id: this.id
     }
-    this.res = this.cooServ.addUser(dataToPass).subscribe((data:any)=>{
+    this.cooServ.addUser(dataToPass).subscribe((data:any)=>{
       console.log(data);
-      //this.notify.msgSuccess("User Added Successfully");
+      this.notify.msgSuccess("User Added Successfully"); 
+      this.ngOnInit();   
     })
   }
 
   goToLogin(){
     this.router.navigate(['login']);
   }
-
 }

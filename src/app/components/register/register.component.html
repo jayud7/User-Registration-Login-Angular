@@ -2,12 +2,16 @@
     <div class="block">
         <form [formGroup]="register">  
             <h2>Register</h2>
-            <input type="text" placeholder="Enter Username" class="inp" formControlName="userName"/>
+            <input type="text" placeholder="Enter Username(example@example.com)" class="inp" formControlName="userName"/>
+            <small *ngIf="register.get('userName').invalid && register.get('userName').touched" class="text-danger">Email is required</small>
             <input type="text" placeholder="Enter Password" class="inp" formControlName="password"/>
+            <small *ngIf="register.get('password').invalid && register.get('password').touched" class="text-danger">Password is required</small>
             <input type="text" placeholder="Enter Name" class="inp" formControlName="name"/>
-            <input type="number" placeholder="Enter Mobile" class="inp" formControlName="mobile"/>
+            <small *ngIf="register.get('name').invalid && register.get('name').touched" class="text-danger">Name is required</small>
+            <input type="number" placeholder="Enter Mobile(1234567890)" class="inp" formControlName="mobile"/>
+            <small *ngIf="register.get('mobile').invalid && register.get('mobile').touched" class="text-danger">Mobile is required</small>
             <div class="btns">
-                <button (click)="registerSubmit(register.value)" >Sign up</button>
+                <button [disabled]="register.invalid" (click)="registerSubmit(register.value)" >Sign up</button>
                 <button (click)="goToLogin()">Login</button>
             </div>
         </form>

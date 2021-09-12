@@ -16,12 +16,4 @@ export class CommonService {
   addUser(data:any){
     return this.http.post(this.baseURL,data);
   }
-
-  countUser(){
-    this.getUser().subscribe((data:any)=>{
-      this.users = data;
-    })
-    return this.users.length++;
-  }
-
 }
